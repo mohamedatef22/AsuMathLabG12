@@ -20,6 +20,7 @@ class Matrix
         delete pData;
     }  */
 
+
     void setValue(double data[]);
     Matrix Inv( Matrix& a);
     void Swap(double& a, double& b);
@@ -28,6 +29,11 @@ class Matrix
     Matrix Diag(const int n);
       Matrix Minor(const int row, const int col) ;
         Matrix Divide ( Matrix a, Matrix b);
+
+        void N_A_N ();
+            Matrix elementDivision (Matrix &A);
+            Matrix elementDivision (double A);
+
 
 
 
