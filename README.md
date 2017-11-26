@@ -33,15 +33,9 @@ C =
 
 - D=eye(4,4)
 
-D =    1    0    0    0
-       0    1    0    0
-       0    0    1    0
-       0    0    0    1 
+-D should be 4x4 matrix all elements equal 0 except the main diagonal element equals 1
 
 - E=zeros(2,3);
-
-
-E =   0    0   0    
-      0    0   0    
+- E should be a matrix of zeros with 2 rows and 3 columns   
 
        
