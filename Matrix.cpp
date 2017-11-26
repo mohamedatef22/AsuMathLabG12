@@ -573,6 +573,7 @@ Matrix Matrix::Inv( Matrix& a)
                     pData[i][j]*=sign;
                     sign*=-1;
                 }
+              sign*=-1;
             }
         }
     }

@@ -102,6 +102,8 @@ cout<<input<<endl;
          string name=input.substr(0,1);
         // name=trim(name);
          string matrix1,matrix2;
+
+
          
          if(input.find('+')<input.size()){
              name="C";
@@ -118,13 +120,15 @@ cout<<input<<endl;
         
         //  matrix2=input.substr(input.find('+')+1);    matrix2=trim(matrix2);    cout<<matrix2<<matrix2.length()<<endl;  
          matMap.insert(pair<string,Matrix>(name,matMap.at(matrix1)+matMap.at(matrix2)));
-         matMap.at(name).printMatrix();
+         //matMap.at(name).printMatrix();
          if(input[input.size()-1]!=';'){
            cout<<name<<'='<<endl;
        matMap.at(name).printMatrix();
        }   
           
       }
+
+
 
       if(input.find('-')<input.size()){
          string matrix1=input.substr(input.find('=')+1,input.find('-')-input.find('=')-1);   matrix1=trim(matrix1);
