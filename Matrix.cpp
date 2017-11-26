@@ -5,6 +5,7 @@
 #include"string.h"
 #include"map"
 #include<string>
+#include<math.h>
 //#include<fstream>
 #include <algorithm> 
 //#include<sstream>
@@ -633,16 +634,7 @@ void Matrix::multiply (Matrix &A) // Multiply Two matrices
             }
     }
     /*
-    Matrix Matrix::operator / (Matrix & A)
-    {
-        Matrix B (nRow,nCol);
-        Matrix C (nRow,nCol);
-        C.Copy(*this);
-        B.inverseMat(A);
-        C.multiply(B);
-        return C;
-
-    } */
+   
     Matrix Matrix::operator / (Matrix & A)
     {
        
@@ -654,7 +646,72 @@ void Matrix::multiply (Matrix &A) // Multiply Two matrices
        
         return C;
 
+    } */
+     void Matrix::N_A_N ()   //put not a number a value in case of divide by a singular matrix
+    {
+        for (int i=0;i<nRow;i++)
+        {
+            for (int j=0;j<nCol;j++)
+              pData[i][j]=nan(" ");
+              
+        }
+    }    
+
+
+Matrix Matrix::operator / (Matrix & A)
+    {
+        Matrix B (A.nRow,A.nCol);
+        Matrix C (nRow,nCol);
+       if (A.matDeterminant()==0)
+       {
+           C.N_A_N();
+           return C;
+       }
+       else
+       {
+
+        C.Copy(*this);
+        B.inverseMat(A);
+        C.multiply(B);
+
+        return C;
+        }
+
     }
+
+    //Divide element by element
+
+    Matrix Matrix::elementDivision (Matrix &A)
+    {
+        if (nRow != A.nRow && nCol!= A.nCol)
+            throw Exception("Invalid Matrix Dimension");
+
+            Matrix B(nRow,nCol);
+            for (int r=0;r<nRow;r++)
+            {
+                for (int c=0;c<nCol;c++)
+                {
+                    B.pData[r][c]=pData[r][c]/A.pData[r][c];
+                }
+            }
+            return B;
+    }
+
+    Matrix Matrix::elementDivision (double A)
+    {
+       
+
+            Matrix B(nRow,nCol);
+            for (int r=0;r<nRow;r++)
+            {
+                for (int c=0;c<nCol;c++)
+                {
+                    B.pData[r][c]=A/pData[r][c];
+                }
+            }
+            return B;
+    }
+
     
    
   //*******************************************************************************************
